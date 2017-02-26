@@ -1,0 +1,24 @@
+{
+  "name": "node-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "NODE_ENV=test node ./test/client.js | tap-spec"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "hash.js": "^1.0.3",
+    "moment": "^2.17.1",
+    "node-express-json-rpc2": "^1.0.2"
+  },
+  "devDependencies": {
+    "tape": "^4.6.3",
+    "tap-spec": "^4.1.1",
+    "supertest": "^3.0.0"
+  }
+}
