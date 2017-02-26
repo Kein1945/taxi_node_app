@@ -25,14 +25,18 @@ exports.requests = function ({body:{token}}, res, next) {
 
 exports.request = function (req, res, next) {
     let {from, to, token, date} = req.body;
+    let driver = null;
 
     const date_empty = !date,
-        date_in_past = moment().diff(moment(date)) > 0;
-    if(date_empty || date_in_past) {
+        date_in_past = moment().diff(moment(date)) > 0,
+        immediate_request = date_empty || date_in_past;
+    if(immediate_request) {
         date = moment()
+        driver = db.find_nearest_driver(from)
     }
 
     res.json({
-        id: db.request_add({from, to, token, date}),
+        id: db.request_add({from, to, token, date, driver}),
+        driver,
     })
 };
